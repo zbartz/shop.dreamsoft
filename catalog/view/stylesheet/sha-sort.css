@@ -1,0 +1,135 @@
+/* min */
+.shas-sort{
+	 
+	     margin-top: 30px;
+	     margin-bottom: 0;
+}
+#sha-sort .title {
+    float: right;
+}
+
+#sha-sort span{
+color:  #3b3b3b;
+font-size: 18px;/* Приближение из-за подстановки шрифтов */
+font-weight: 500;
+line-height: 22px;/* Приближение из-за подстановки шрифтов */
+}
+/* sha-sort */
+
+#sha-sort a {
+    display: block;
+    float: right;
+   padding: 0 18px 0 19px;
+    height: 53px;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: top;
+    border: none;
+    text-decoration: none;
+    margin-right: 15px;
+    color:  #9b9b9b;
+font-size: 18px;/* Приближение из-за подстановки шрифтов */
+font-weight: 500;
+line-height: 22px;/
+}
+
+#sha-sort a[sort-class="pd.name-DESC"],
+#sha-sort a[sort-class="p.price-DESC"],
+#sha-sort a[sort-class="rating-ASC"],
+#sha-sort a[sort-class="p.model-DESC"],
+#sha-sort a.selected {
+    display: none
+}
+
+#sha-sort a[sort-class="pd.name-ASC"].selected + a[sort-class="pd.name-DESC"],
+#sha-sort a[sort-class="p.price-ASC"].selected + a[sort-class="p.price-DESC"],
+#sha-sort a[sort-class="rating-DESC"].selected + a[sort-class="rating-ASC"],
+#sha-sort a[sort-class="p.model-ASC"].selected + a[sort-class="p.model-DESC"],
+#sha-sort a[sort-class="pd.name-ASC"].next-selected,
+#sha-sort a[sort-class="p.price-ASC"].next-selected,
+#sha-sort a[sort-class="rating-DESC"].next-selected,
+#sha-sort a[sort-class="p.model-ASC"].next-selected {
+    display: inline-block;
+    color: #e64242;;
+     border-bottom: 5px solid;
+    
+}
+
+#sha-sort a span {
+    background: url('../../../image/shaimages/icons_sort2.png') right bottom no-repeat;
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+    margin-bottom: -2px;
+    margin-top: 4px;
+    display: block;
+    float: right;
+}
+
+#sha-sort a[sort-class="pd.name-ASC"] span {
+    background-position: 0 -123px
+}
+
+#sha-sort a[sort-class="p.price-ASC"] span {
+    background-position: 0 -123px
+}
+
+#sha-sort a[sort-class="rating-DESC"] span {
+    background-position: 0 -123px
+}
+
+#sha-sort a[sort-class="pd.name-ASC"].next-selected span,
+#sha-sort a[sort-class="p.price-ASC"].next-selected span,
+#sha-sort a[sort-class="rating-DESC"].next-selected span,
+#sha-sort a[sort-class="p.model-ASC"].next-selected span {
+    background-position: 0 -56px
+}
+
+#sha-sort a[sort-class="pd.name-DESC"] span,
+#sha-sort a[sort-class="p.price-DESC"] span,
+#sha-sort a[sort-class="rating-DESC"].selected + a[sort-class="rating-ASC"] span,
+#sha-sort a[sort-class="p.model-ASC"].selected + a[sort-class="p.model-DESC"] span {
+    background-position: -14px -56px
+}
+
+#sha-sort a[sort-class="p.model-ASC"] span {
+    background-position: 0 -123px;
+}
+
+#sha-sort a[sort-class="p.sort_order-ASC"] {
+     display:none;
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  #sha-sort a {
+    padding: 0 0px 0 12px;
+    height: 53px;
+    margin-right: 0px;
+}
+}
+@media  only screen and (min-width: 768px) and (max-width: 991.9px) {
+   #sha-sort a{
+       font-size: 14px;
+   }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+    #sha-sort span{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #sha-sort a{
+           
+    height: 30px;
+    margin-right: 0px;
+    }
+    #sha-sort{
+        display: flex;
+    flex-flow: column wrap;
+    }
+}
+@media (min-width: 375px) and (max-width: 767px) {
+  
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  
+}

@@ -1,0 +1,26 @@
+2018-09-24 12:19:11 - 
+ERROR: CODE NOT FOUND!
+FILE: admin/language/ru-ru/extension/theme/theme_default.php
+CODE: $_['entry_image_category']             = 'Размер изображения в списке категорий';
+MOD: Image Subcategory
+
+ERROR: CODE NOT FOUND!
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <p><?php echo $powered; ?></p>
+MOD: viethemes - Extra Positions
+
+ERROR: FILE NOT FOUND!
+FILE: /home/dreamsof/newshop.ga/admin/controller/common/menu.php
+MOD: Удаление модулей
+
+ERROR: FILE NOT FOUND!
+FILE: /home/dreamsof/newshop.ga/admin/controller/common/menu.php
+MOD: Удаление модулей
+
+ERROR: FILE NOT FOUND!
+FILE: /home/dreamsof/newshop.ga/admin/controller/common/menu.php
+MOD: Удаление модулей
+
+ERROR: FILE NOT FOUND!
+FILE: /home/dreamsof/newshop.ga/admin/view/template/common/menu.tpl
+MOD: Удаление модулей
