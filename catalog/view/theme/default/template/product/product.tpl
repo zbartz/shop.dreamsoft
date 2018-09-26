@@ -372,24 +372,60 @@
      
    
       <?php if ($products) { ?>
-      <h3><?php echo $text_related; ?></h3>
-      <div class="row">
-        <div class="owl-carousel">
-          <script type="text/javascript">console.log('asdasdasd')</script>
-        <?php $i = 0; 
-          echo '<script type="text/javascript">console.log("'.mysql_num_rows($products).'asdasdasd'.'")</script>';
-        ?>
-        <?php foreach ($products as $product) { ?>
-        <?php if ($column_left && $column_right) { ?>
-        <?php $class = 'col-xs-8 col-sm-6'; ?>
-        <?php } elseif ($column_left || $column_right) { ?>
-        <?php $class = 'col-xs-6 col-md-4'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-xs-6 col-sm-3'; ?>
-        <?php } ?>
+        <h3><?php echo $text_related; ?></h3>
+        <div class="row">
+          <script type="text/javascript">
+            $(document).ready(function() {
+              $("body").on("change", "#additionalgoods", function(e) {
+                e.preventDefault();
+                var clickedID = this.name.split("_"); //Разбиваем строку (Split работает аналогично PHP explode)
+                var DbNumberID = clickedID[1]; //и получаем номер из массива
+                if (this.checked==true){
+                  plus = 'y';
+                } else {
+                  plus = 'n';
+                }
+                jQuery.ajax({
+                  type: "POST", // HTTP метод  POST или GET
+                  url: "controller/extension/module/additionalgoods.php", //url-адрес, по которому будет отправлен запрос
+                  dataType:"text", // Тип данных
+                  data:{  myData : '{"id" : "' + DbNumberID + '"}'
+                }, 
+                success:function(response){
+                  var resp = response.split("eto_moi_razdelitel");
+                  if (resp[0].trim()=='error') {
+                    alert(resp[1]);
+                  } else {  
+                 if (plus=='y'){
+                    $("#price_additionalgoods")[0].innerHTML = parseInt($("#price_additionalgoods").text(), 10) + parseInt(response, 10);  }
+                   else {
+                    $("#price_additionalgoods")[0].innerHTML = parseInt($("#price_additionalgoods").text(), 10) - parseInt(response, 10);  }
+                  }
+                },
+                error:function (xhr, ajaxOptions, thrownError){
+                    //выводим ошибку
+                    alert(thrownError);
+                  }
+                });
+              });
+            });
+          </script>
+          <div id="price_additionalgoods">0</div>
+          <?php $i = 0; 
+        foreach ($products as $product) { 
+         if ($column_left && $column_right) { 
+           $class = 'col-xs-8 col-sm-6'; 
+         } elseif ($column_left || $column_right) { 
+           $class = 'col-xs-6 col-md-4';
+         } else { 
+           $class = 'col-xs-6 col-sm-3';
+         }
+
+         // echo '<script type="text/javascript">console.log("'.$class.'");</script>'; <?php print_r($product);  ?>
         <div class="<?php echo $class; ?>">
           <div class="product-thumb transition">
-            <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
+
+            <div class="image"><input type="checkbox" name="additionalgoods_<?php echo $product['product_id']; ?>" id="additionalgoods"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
             <div class="caption">
               <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
               <p><?php echo $product['description']; ?></p>
@@ -433,7 +469,7 @@
         <?php } ?>
         <?php $i++; ?>
         <?php } ?>
-      </div>
+      
       <?php } ?>
       <?php if ($tags) { ?>
       <p><?php echo $text_tags; ?>
@@ -658,7 +694,7 @@ $(document).ready(function() {
 })
 //--></script>
 <script src="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
-<script type="text/javascript">
+<!--<script type="text/javascript">
   $(document).ready(function() {
     $('.owl-carousel').owlCarousel({
        items: 4,
@@ -668,5 +704,5 @@ $(document).ready(function() {
    pagination: true
      });
   })
-</script>
+</script>-->
 <?php echo $footer; ?>

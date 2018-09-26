@@ -25,3 +25,4 @@ define('DB_PASSWORD', '');
 define('DB_DATABASE', 'dreamsof_newshop');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');
+
