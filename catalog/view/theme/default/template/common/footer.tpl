@@ -24,8 +24,8 @@
     <?php } ?>
       <div class="col-sm-3 second_column">
         <ul class="list-unstyled">
-        <li><a href="http://newshop.ga/catalogue">Каталог</a></li>
-        <li><a href="http://newshop.ga/delivery">Доставка и оплата</a></li>
+        <li><a href="http://shop.dreamsoft/catalogue">Каталог</a></li>
+        <li><a href="http://shop.dreamsoft/delivery">Доставка и оплата</a></li>
         <li><a href="">О производителе</a></li>  
         <li><a href="">Новости</a></li>
         <li><a href="">Статьи</a></li>
@@ -50,9 +50,9 @@
     <div class="col-md-auto flex_footer">
     <img src="../image/logo.png@1X.png" alt="" class="logoimg">
  <div>   <span><?php echo $powered; ?></span>  </div>
- <div>   <span><a href="http://newshop.ga/feedback" class="flinks">Обратная связь</a></span></div>
-  <div>  <span><a href="http://newshop.ga/rewiev"  class="flinks">Оставить отзыв</a></span> </div>
- <div>   <span> <a href="http://newshop.ga/offer_book"  class="flinks">Книга жалоб и предложений</a> </span> </div>
+ <div>   <span><a href="http://shop.dreamsoft/feedback" class="flinks">Обратная связь</a></span></div>
+  <div>  <span><a href="http://shop.dreamsoft/rewiev"  class="flinks">Оставить отзыв</a></span> </div>
+ <div>   <span> <a href="http://shop.dreamsoft/offer_book"  class="flinks">Книга жалоб и предложений</a> </span> </div>
  <div>
     <img src="../image/icons8-вконтакте-26@1X.png" alt="" class="img_social_footer">
     <img src="../image/icons8-instagram-26 копия@1X.png" alt="" class="img_social_footer">

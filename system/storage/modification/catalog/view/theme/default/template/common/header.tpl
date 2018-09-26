@@ -181,7 +181,7 @@
         </div>
         <div class="collapse navbar-collapse menu_red" id="bs-example-navbar-collapse-1">
             <ul class="nav nav-pills">
-                <li class="dropdown"><a id="drop4" href="http://newshop.ga/catalogue">Каталог</a>
+                <li class="dropdown"><a id="drop4" href="http://shop.dreamsoft/catalogue">Каталог</a>
           <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
             <?php foreach ($categories as $category) { ?>
         <?php if ($category['children']) { ?>
@@ -204,11 +204,11 @@
         <?php } ?>
           </ul>
         </li>
-                 <li class="item-header-menu"><a href="http://newshop.ga/delivery">Доставка и оплата</a></li>
-         <li class="item-header-menu"><a href="http://newshop.ga/about_us">О производителе</a></li>
-         <li class="item-header-menu"><a href="http://newshop.ga/news">Новости</a></li>
-         <li class="item-header-menu"><a href="http://newshop.ga/article">Статьи</a></li>
-     <li class="item-header-menu"><a href="http://newshop.ga/contacts">Контакты</a></li> 
+                 <li class="item-header-menu"><a href="http://shop.dreamsoft/delivery">Доставка и оплата</a></li>
+         <li class="item-header-menu"><a href="http://shop.dreamsoft/about_us">О производителе</a></li>
+         <li class="item-header-menu"><a href="http://shop.dreamsoft/news">Новости</a></li>
+         <li class="item-header-menu"><a href="http://shop.dreamsoft/article">Статьи</a></li>
+     <li class="item-header-menu"><a href="http://shop.dreamsoft/contacts">Контакты</a></li> 
     <li class="currency"> <?php echo $currency;?> </li>
  
             </ul>
@@ -331,5 +331,5 @@ jQuery(this).find('.dropdown-menu').stop(true, true).delay(10).fadeIn();
 jQuery(this).find('.dropdown-menu').stop(true, true).delay(10).fadeOut();
 });
 </script>
-<script type="text/javascript" src="http://newshop.ga/catalog/view/javascript/validator.min.js"></script>
-<script type="text/javascript" src="http://newshop.ga/catalog/view/javascript/form-scripts.js"></script>
+<script type="text/javascript" src="http://shop.dreamsoft/catalog/view/javascript/validator.min.js"></script>
+<script type="text/javascript" src="http://shop.dreamsoft/catalog/view/javascript/form-scripts.js"></script>

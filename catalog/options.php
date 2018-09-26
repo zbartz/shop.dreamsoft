@@ -1,4 +1,4 @@
-﻿<meta http-equiv='refresh' content='2; url=http://newshop.ga/'>
+﻿<meta http-equiv='refresh' content='2; url=http://shop.dreamsoft/'>
 <meta charset="UTF-8" />
 <title>Сообщение отправлено</title>
 <?php

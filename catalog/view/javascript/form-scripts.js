@@ -2,7 +2,7 @@ jQuery(function($){
     jQuery('#myform').click(function(){
         form = $(this).parent('form');
         $.ajax({
-            url: 'http://newshop.ga/options.php',
+            url: 'http://shop.dreamsoft/options.php',
             type: 'GET',
             dataType: 'json',
             data: ({

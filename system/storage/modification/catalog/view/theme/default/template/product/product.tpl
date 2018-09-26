@@ -381,7 +381,10 @@
       <h3><?php echo $text_related; ?></h3>
       <div class="row">
         <div class="owl-carousel">
-        <?php $i = 0; ?>
+          <script type="text/javascript">console.log('asdasdasd')</script>
+        <?php $i = 0; 
+          echo '<script type="text/javascript">console.log("'.mysql_num_rows($products).'asdasdasd'.'")</script>';
+        ?>
         <?php foreach ($products as $product) { ?>
         <?php if ($column_left && $column_right) { ?>
         <?php $class = 'col-xs-8 col-sm-6'; ?>
