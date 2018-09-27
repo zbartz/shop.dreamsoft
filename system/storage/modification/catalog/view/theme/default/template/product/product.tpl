@@ -293,6 +293,42 @@
           </div>
        
         </div></div></div></div></div></div></div></div>
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      $("body").on("change", "#additionalgoods", function(e) {
+                        e.preventDefault();
+                        var clickedID = this.name.split("_"); //Разбиваем строку (Split работает аналогично PHP explode)
+                        var DbNumberID = clickedID[1]; //и получаем номер из массива
+                        if (this.checked==true){
+                          plus = 'y';
+                        } else {
+                          plus = 'n';
+                        }
+                        jQuery.ajax({
+                          type: "POST", // HTTP метод  POST или GET
+                          url: "controller/extension/module/additionalgoods.php", //url-адрес, по которому будет отправлен запрос
+                          dataType:"text", // Тип данных
+                          data:{  myData : '{"id" : "' + DbNumberID + '","plus" : "'+plus+'","price" : "'+$("#price_additionalgoods").text()+'"}'
+                        }, 
+                        success:function(response){
+                          var resp = response.split("eto_moi_razdelitel");
+                          if (resp[0].trim()=='error') {
+                            alert(resp[1]);
+                          } else {  
+                           if (plus=='y'){
+                            $("#price_additionalgoods")[0].innerHTML = parseInt($("#price_additionalgoods").text(), 10) + parseInt(response, 10);  }
+                            else {
+                              $("#price_additionalgoods")[0].innerHTML = parseInt($("#price_additionalgoods").text(), 10) - parseInt(response, 10);  }
+                            }
+                          },
+                          error:function (xhr, ajaxOptions, thrownError){
+                            //выводим ошибку
+                            alert(thrownError);
+                          }
+                        });
+                      });
+                    });
+                  </script>
            <div class="container-fluid bg_grey">
    	<div class="container">
       <?php if ($products) { ?>
@@ -311,6 +347,12 @@
         <?php } ?>-->
         <div class="">
           <div class="product-thumb transition">
+          	 <label>
+                    <input class="checkbox" type="checkbox" name="checkbox-test">
+                    <span class="checkbox-custom"></span>
+                    <span class="label">Lorem ipsum dolor</span>
+                </label>
+
             <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
             <div class="caption_new">
               <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
@@ -331,7 +373,7 @@
       <?php } ?>
       <div class="col-md-2 price_dop">
       	<p>Сумма покупки</p>
-      	<h4>Цена</h4>
+      	<div id="additionalgoods"><h4>0.00<span class="currency">бел. руб.</span></h4></div>
       	<!--<?php if ($product['price']) { ?>
         <p class="price">
           <?php if (!$product['special']) { ?>
