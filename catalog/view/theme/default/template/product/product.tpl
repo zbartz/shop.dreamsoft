@@ -38,16 +38,20 @@
               <?php } ?>
              <!-- <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $text_write; ?></a></p>-->
             
-            <button type="button" class="compared" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"></button>
-            <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style" data-url="<?php echo $share; ?>"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
+
             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
             <!-- AddThis Button END -->
 
           </div>
+          <div class="col-md-2 compar">
+          	 <button type="button" class="compared" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"></button>
+            <div class="sale_sq"><span>50%</span></div>
+            <!-- AddThis Button BEGIN -->
+            <div class="addthis_toolbox addthis_default_style" data-url="<?php echo $share; ?>"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
+          </div>
           <?php } ?>
-
-          <ul class="thumbnails">
+		<div class="col-md-10">	
+          <ul class="thumbnails ">
             <?php if ($thumb) { ?>
             <li><a class="thumbnail no-border" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
             <?php } ?>
@@ -57,6 +61,7 @@
             <?php } ?>
             <?php } ?>
           </ul>
+          </div>
           </div>
           <?php } ?>
         </div>
@@ -119,7 +124,29 @@
             <li><img src="../image/icons24.png" alt=""> Самовывоз</li>
             <li><img src="../image/icons26.png" alt=""> Доставка курьером</li>
           </ul>
-
+           <!-- <hr class="hr_width80">
+				   <?php if ($recurrings) { ?>
+            <hr>
+            <h3><?php echo $text_payment_recurring; ?></h3>
+            <div class="form-group required">
+              <select name="recurring_id" class="form-control">
+                <option value=""><?php echo $text_select; ?></option>
+                <?php foreach ($recurrings as $recurring) { ?>
+                <option value="<?php echo $recurring['recurring_id']; ?>"><?php echo $recurring['name']; ?></option>
+                <?php } ?>
+              </select>
+              <div class="help-block" id="recurring-description"></div>
+            </div>
+            <?php } ?>
+            <div class="form-group">
+              <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
+              <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
+              <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+             
+            </div>
+            <?php if ($minimum > 1) { ?>
+            <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
+            <?php } ?>-->
           </div>
          <!-- <?php if ($price) { ?>
           <ul class="list-unstyled">
@@ -262,28 +289,7 @@
             <?php } ?>
             <?php } ?>
             <?php } ?>
-            <?php if ($recurrings) { ?>
-            <hr>
-            <h3><?php echo $text_payment_recurring; ?></h3>
-            <div class="form-group required">
-              <select name="recurring_id" class="form-control">
-                <option value=""><?php echo $text_select; ?></option>
-                <?php foreach ($recurrings as $recurring) { ?>
-                <option value="<?php echo $recurring['recurring_id']; ?>"><?php echo $recurring['name']; ?></option>
-                <?php } ?>
-              </select>
-              <div class="help-block" id="recurring-description"></div>
-            </div>
-            <?php } ?>
-            <div class="form-group">
-              <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
-              <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
-              <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-             
-            </div>
-            <?php if ($minimum > 1) { ?>
-            <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
-            <?php } ?>
+         
           </div>
        
         </div></div></div></div></div></div></div></div>
@@ -303,12 +309,11 @@
         <?php } else { ?>
         <?php $class = 'col-xs-6 col-sm-3'; ?>
         <?php } ?>-->
-        <div class="">
+        <div class="box-shadow">
           <div class="product-thumb transition">
           	 <label>
                     <input class="checkbox" type="checkbox" name="checkbox-test">
                     <span class="checkbox-custom"></span>
-                    <span class="label">Lorem ipsum dolor</span>
                 </label>
 
             <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
@@ -361,7 +366,9 @@
       <?php } ?>
       <?php echo $content_bottom; ?></div></div> 
     <?php echo $column_right; ?></div>
-            <div class="container-fluid"> 
+            <div class="container-fluid tabs">
+            <div class="row">	 
+            <div class="container">	
             <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
             <?php if ($attribute_groups) { ?>
@@ -371,6 +378,8 @@
             <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
             <?php } ?>
           </ul>
+          </div>
+          </div>
            </div>
            <div class="container">  
           <div class="tab-content">
@@ -666,7 +675,6 @@ $(document).ready(function() {
    navigation: true,
    navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
    pagination: false,
-
      });
   })
 </script>
