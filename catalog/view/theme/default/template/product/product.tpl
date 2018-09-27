@@ -287,6 +287,161 @@
           </div>
        
         </div></div></div></div></div></div></div></div>
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      $("body").on("change", ".additionalgoods", function(e) {
+                        e.preventDefault();
+                        var clickedID = this.name.split("_"); //Разбиваем строку (Split работает аналогично PHP explode)
+                        var DbNumberID = clickedID[1]; //и получаем номер из массива
+                          $('input').each(function(i,elem) {
+                            if ($(this).hasClass("additionalgoods")) {
+                              elem.disabled = true;
+                            } 
+                          });
+                        if (this.checked==true){
+                          plus = 'y';
+                        } else {
+                          plus = 'n';
+                        }
+                        jQuery.ajax({
+                          type: "POST", // HTTP метод  POST или GET
+                          url: "controller/extension/module/additionalgoods.php", //url-адрес, по которому будет отправлен запрос
+                          dataType:"text", // Тип данных
+                          data:{  myData : '{"id" : "' + DbNumberID + '","plus" : "'+plus+'","price" : "'+$("#price_additionalgoods").text()+'"}'
+                        }, 
+                        success:function(response){
+                          var resp = response.split("eto_moi_razdelitel");
+                          if (resp[0].trim()=='error') {
+                            if (resp[1].trim()!='w8'){
+                              alert(resp[1]);
+                              $('input').each(function(i,elem) {
+                                if ($(this).hasClass("additionalgoods")) {
+                                  elem.disabled = false;
+                                } 
+                              });
+                            }
+                          } else {  
+                            $("#price_additionalgoods")[0].innerHTML = response;  
+                              $('input').each(function(i,elem) {
+                                if ($(this).hasClass("additionalgoods")) {
+                                  elem.disabled = false;
+                                } 
+                              });
+                            }
+                          },
+                          error:function (xhr, ajaxOptions, thrownError){
+                            //выводим ошибку
+                            alert(thrownError);
+                              $('input').each(function(i,elem) {
+                                if ($(this).hasClass("additionalgoods")) {
+                                  elem.disabled = false;
+                                } 
+                              });
+                          }
+                        });
+                      });
+                    });
+                    function add_additionalgoods(){
+                          $('input').each(function(i,elem) {
+                            if ($(this).hasClass("additionalgoods")) {
+                              elem.disabled = true;
+                            } 
+                          });
+
+                          $('input').each(function(i,elem) {
+                            if ($(this).hasClass("additionalgoods")) {
+                                  setTimeout(function () {
+                                  if (elem.checked==true){
+                                    var clickedID = elem.name.split("_"); 
+                                    var product_id = clickedID[1];
+                                    quantity = 1;
+                                    console.log(product_id);
+                                    cart.add_additionalgoods(product_id);
+                                  } }, 1000);
+                            } 
+                          });
+
+                          $('input').each(function(i,elem) {
+                            if ($(this).hasClass("additionalgoods")) {
+                              elem.disabled = false;
+                            } 
+                          });
+                    }
+                  </script>
+           <div class="container-fluid bg_grey">
+   	<div class="container">
+      <?php if ($products) { ?>
+      <h3><?php echo $text_related; ?></h3>
+      <div class="row">
+      	<div class="col-md-10">
+        <div class="owl-carousel">
+        <?php $i = 0; ?>
+        <?php foreach ($products as $product) { ?>
+        <!--<?php if ($column_left && $column_right) { ?>
+        <?php $class = 'col-xs-8 col-sm-6'; ?>
+        <?php } elseif ($column_left || $column_right) { ?>
+        <?php $class = 'col-xs-6 col-md-4'; ?>
+        <?php } else { ?>
+        <?php $class = 'col-xs-6 col-sm-3'; ?>
+        <?php } ?>-->
+        <div class="">
+          <div class="product-thumb transition">
+          	 <label>
+                    <input class="checkbox additionalgoods" type="checkbox" name="additionalgoods_<?php echo $product['product_id'];?>" >
+                    <span class="checkbox-custom"></span>
+                    <span class="label">Lorem ipsum dolor</span>
+                </label>
+
+            <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
+            <div class="caption_new">
+              <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
+            </div>
+          </div>
+        </div>
+       <!-- <?php if (($column_left && $column_right) && (($i+1) % 2 == 0)) { ?>
+        <div class="clearfix visible-md visible-sm"></div>
+        <?php } elseif (($column_left || $column_right) && (($i+1) % 3 == 0)) { ?>
+        <div class="clearfix visible-md"></div>
+        <?php } elseif (($i+1) % 4 == 0) { ?>
+        <div class="clearfix visible-md"></div>
+        <?php } ?>-->
+        <?php $i++; ?>
+        <?php } ?>
+      </div>
+  </div>
+      <?php } ?>
+      <div class="col-md-2 price_dop">
+      	<p>Сумма покупки</p>
+      	<div id="price_additionalgoods"><h4>0.00<span class="currency">бел. руб.</span></h4></div>
+      	<!--<?php if ($product['price']) { ?>
+        <p class="price">
+          <?php if (!$product['special']) { ?>
+          <?php echo $product['price']; ?>
+          <?php } else { ?>
+           <p class="price_sales">
+          <span class="price-old"><?php echo $product['price']; ?></span>  <span class="price-new"><?php echo $product['special']; ?></span> 
+          <?php } ?>
+          <?php if ($product['tax']) { ?>
+          <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
+        </p>
+          <?php } ?>
+        </p>
+        <?php } ?>-->
+      	 <button type="button" onclick="add_additionalgoods()"><img src="../image/icons8cart.png" alt=""> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+      </div>
+      <?php if ($tags) { ?>
+      <p><?php echo $text_tags; ?>
+        <?php for ($i = 0; $i < count($tags); $i++) { ?>
+        <?php if ($i < (count($tags) - 1)) { ?>
+        <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
+        <?php } else { ?>
+        <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
+        <?php } ?>
+        <?php } ?>
+      </p>
+      <?php } ?>
+      <?php echo $content_bottom; ?></div></div> 
+    <?php echo $column_right; ?></div>
             <div class="container-fluid"> 
             <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
@@ -369,121 +524,9 @@
             </div>
             <?php } ?>
           </div>
-     
-   
-      <?php if ($products) { ?>
-        <h3><?php echo $text_related; ?></h3>
-        <div class="row">
-          <script type="text/javascript">
-            $(document).ready(function() {
-              $("body").on("change", "#additionalgoods", function(e) {
-                e.preventDefault();
-                var clickedID = this.name.split("_"); //Разбиваем строку (Split работает аналогично PHP explode)
-                var DbNumberID = clickedID[1]; //и получаем номер из массива
-                if (this.checked==true){
-                  plus = 'y';
-                } else {
-                  plus = 'n';
-                }
-                jQuery.ajax({
-                  type: "POST", // HTTP метод  POST или GET
-                  url: "controller/extension/module/additionalgoods.php", //url-адрес, по которому будет отправлен запрос
-                  dataType:"text", // Тип данных
-                  data:{  myData : '{"id" : "' + DbNumberID + '"}'
-                }, 
-                success:function(response){
-                  var resp = response.split("eto_moi_razdelitel");
-                  if (resp[0].trim()=='error') {
-                    alert(resp[1]);
-                  } else {  
-                 if (plus=='y'){
-                    $("#price_additionalgoods")[0].innerHTML = parseInt($("#price_additionalgoods").text(), 10) + parseInt(response, 10);  }
-                   else {
-                    $("#price_additionalgoods")[0].innerHTML = parseInt($("#price_additionalgoods").text(), 10) - parseInt(response, 10);  }
-                  }
-                },
-                error:function (xhr, ajaxOptions, thrownError){
-                    //выводим ошибку
-                    alert(thrownError);
-                  }
-                });
-              });
-            });
-          </script>
-          <div id="price_additionalgoods">0</div>
-          <?php $i = 0; 
-        foreach ($products as $product) { 
-         if ($column_left && $column_right) { 
-           $class = 'col-xs-8 col-sm-6'; 
-         } elseif ($column_left || $column_right) { 
-           $class = 'col-xs-6 col-md-4';
-         } else { 
-           $class = 'col-xs-6 col-sm-3';
-         }
+     </div>
 
-         // echo '<script type="text/javascript">console.log("'.$class.'");</script>'; <?php print_r($product);  ?>
-        <div class="<?php echo $class; ?>">
-          <div class="product-thumb transition">
-
-            <div class="image"><input type="checkbox" name="additionalgoods_<?php echo $product['product_id']; ?>" id="additionalgoods"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
-            <div class="caption">
-              <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-              <p><?php echo $product['description']; ?></p>
-              <?php if ($product['rating']) { ?>
-              <div class="rating">
-                <?php for ($j = 1; $j <= 5; $j++) { ?>
-                <?php if ($product['rating'] < $j) { ?>
-                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                <?php } else { ?>
-                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                <?php } ?>
-                <?php } ?>
-              </div>
-              <?php } ?>
-              <?php if ($product['price']) { ?>
-              <p class="price">
-                <?php if (!$product['special']) { ?>
-                <?php echo $product['price']; ?>
-                <?php } else { ?>
-                <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
-                <?php } ?>
-                <?php if ($product['tax']) { ?>
-                <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-                <?php } ?>
-              </p>
-              <?php } ?>
-            </div>
-            <div class="button-group">
-              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
-             <!-- <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>-->
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
-            </div>
-          </div>
-        </div>
-        <?php if (($column_left && $column_right) && (($i+1) % 2 == 0)) { ?>
-        <div class="clearfix visible-md visible-sm"></div>
-        <?php } elseif (($column_left || $column_right) && (($i+1) % 3 == 0)) { ?>
-        <div class="clearfix visible-md"></div>
-        <?php } elseif (($i+1) % 4 == 0) { ?>
-        <div class="clearfix visible-md"></div>
-        <?php } ?>
-        <?php $i++; ?>
-        <?php } ?>
-      
-      <?php } ?>
-      <?php if ($tags) { ?>
-      <p><?php echo $text_tags; ?>
-        <?php for ($i = 0; $i < count($tags); $i++) { ?>
-        <?php if ($i < (count($tags) - 1)) { ?>
-        <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
-        <?php } else { ?>
-        <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
-        <?php } ?>
-        <?php } ?>
-      </p>
-      <?php } ?>
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+    </div>
 </div>
  </div>
 <script type="text/javascript"><!--
@@ -693,16 +736,24 @@ $(document).ready(function() {
 	}
 })
 //--></script>
+<link rel="stylesheet" href="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="../catalog/view/javascript/jquery/owl-carousel/owl.theme.css">
 <script src="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
-<!--<script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function() {
     $('.owl-carousel').owlCarousel({
        items: 4,
    autoPlay: 3000,
-   navigation: false,
+   navigation: true,
    navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
-   pagination: true
+   pagination: false,
+
      });
   })
-</script>-->
+$('input').each(function(i,elem) {
+if ($(this).hasClass("additionalgoods")) {
+  elem.checked = false;
+} 
+});
+</script>
 <?php echo $footer; ?>
