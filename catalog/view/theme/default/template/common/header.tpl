@@ -90,6 +90,7 @@
           <?php } ?>
         </div>
       </div>
+<<<<<<< HEAD
 
 
       <?php echo $language; ?>
@@ -105,6 +106,21 @@
               <a href="viber://chat?number=380957225442" class="sociallinks_new"><img src="../image/icons8-viber-filled-50.png" alt="Диолд мастер в viber" /></a>
               <a href="https://api.whatsapp.com/send?phone=380951267232" class="sociallinks_new"><img src="../image/icons8-whatsapp-48.png" alt="Диолд мастер в whatsapp" /></a>
               <a href="skype:username?call" class="sociallinks_new"><img src="../image/icons8-skype-48.png" alt="Диолд мастер в skype" /></a>
+=======
+    <?php echo $language; ?>
+   
+    <div id="top-links" class="nav pull-left">
+      <ul class="list-inline">
+      <!--  <li><a href="https://maps.google.com/maps?q=<?php echo urlencode($geocode); ?>&hl=<?php echo $geocode_hl; ?>&t=m&z=15" target="_blank" ><img src="../image/icons8-marker-50.png" class="" alt="Адрес Диолд мастер"> <span class="  hidden-sm"><?php echo $address; ?></span></a></li>-->
+       <!-- <li><span class="   "><?php echo $geoip; ?></span></li>-->
+       <li><span>Электро-инструмент отечественного производства</span><br><span> для стройки, ремонта и своего хозяйства</span></li>
+        <li><span class="open_new"><?php echo $open; ?></span><span class=" ">Приём заказов круглосуточно</span></li>
+        <li><a href="tel:+2312312312"><img src="../image/tele_icon.png" alt=""> <span class="  tele_new"><?php echo $telephone; ?></a></span> 
+          <div class= "div3">
+            <a href="viber://chat?number=380957225442" class="sociallinks_new"><img src="../image/icons8-viber-filled-50.png" alt="Диолд мастер в viber" /></a>
+            <a href="https://api.whatsapp.com/send?phone=380951267232" class="sociallinks_new"><img src="../image/icons8-whatsapp-48.png" alt="Диолд мастер в whatsapp" /></a>
+           <a href="skype:username?call" class="sociallinks_new"><img src="../image/icons8-skype-48.png" alt="Диолд мастер в skype" /></a>
+>>>>>>> 3fe31c537cb7ea2ed8df461c210940f594b0eb85
               <a href="tg://resolve?domain= " class="sociallinks_new"><img src="../image/icons8-telegram-app-48.png" alt="Диолд мастер в telegram" /></a>
             </div>
 
