@@ -1,5 +1,11 @@
 <div id="cart" class="btn-group btn-block">
-  <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><img src="../image/icons8-basket.png" alt=""> <span id="cart-total"><?php echo $text_items; ?></span></button>
+  <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+    <!--<img src="../image/icons8-basket.png" alt="">-->
+    <span id="cart-total">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <?php echo $text_items; ?>
+    </span>
+  </button>
   <ul class="dropdown-menu pull-right">
     <?php if ($products || $vouchers) { ?>
     <li>
