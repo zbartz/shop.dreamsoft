@@ -42,6 +42,7 @@ font-weight: 700;
     	padding: 18px;
     	background-color: #e64242;
     }
+
 </style>
 <?php if($heading_title){ ?> 
 <h3 class="sreview-title"><?php echo $heading_title; ?></h3>

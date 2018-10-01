@@ -38,16 +38,20 @@
               <?php } ?>
              <!-- <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $text_write; ?></a></p>-->
             
-            <button type="button" class="compared" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"></button>
-            <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style" data-url="<?php echo $share; ?>"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
+
             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
             <!-- AddThis Button END -->
 
           </div>
+          <div class="col-md-2 compar">
+          	 <button type="button" class="compared" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"></button>
+            <div class="sale_sq"><span>50%</span></div>
+            <!-- AddThis Button BEGIN -->
+            <div class="addthis_toolbox addthis_default_style" data-url="<?php echo $share; ?>"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
+          </div>
           <?php } ?>
-
-          <ul class="thumbnails">
+		<div class="col-md-10">	
+          <ul class="thumbnails ">
             <?php if ($thumb) { ?>
             <li><a class="thumbnail no-border" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
             <?php } ?>
@@ -57,6 +61,7 @@
             <?php } ?>
             <?php } ?>
           </ul>
+          </div>
           </div>
           <?php } ?>
         </div>
@@ -125,7 +130,29 @@
             <li><img src="../image/icons24.png" alt=""> Самовывоз</li>
             <li><img src="../image/icons26.png" alt=""> Доставка курьером</li>
           </ul>
-
+           <!-- <hr class="hr_width80">
+				   <?php if ($recurrings) { ?>
+            <hr>
+            <h3><?php echo $text_payment_recurring; ?></h3>
+            <div class="form-group required">
+              <select name="recurring_id" class="form-control">
+                <option value=""><?php echo $text_select; ?></option>
+                <?php foreach ($recurrings as $recurring) { ?>
+                <option value="<?php echo $recurring['recurring_id']; ?>"><?php echo $recurring['name']; ?></option>
+                <?php } ?>
+              </select>
+              <div class="help-block" id="recurring-description"></div>
+            </div>
+            <?php } ?>
+            <div class="form-group">
+              <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
+              <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
+              <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+             
+            </div>
+            <?php if ($minimum > 1) { ?>
+            <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
+            <?php } ?>-->
           </div>
          <!-- <?php if ($price) { ?>
           <ul class="list-unstyled">
@@ -268,28 +295,7 @@
             <?php } ?>
             <?php } ?>
             <?php } ?>
-            <?php if ($recurrings) { ?>
-            <hr>
-            <h3><?php echo $text_payment_recurring; ?></h3>
-            <div class="form-group required">
-              <select name="recurring_id" class="form-control">
-                <option value=""><?php echo $text_select; ?></option>
-                <?php foreach ($recurrings as $recurring) { ?>
-                <option value="<?php echo $recurring['recurring_id']; ?>"><?php echo $recurring['name']; ?></option>
-                <?php } ?>
-              </select>
-              <div class="help-block" id="recurring-description"></div>
-            </div>
-            <?php } ?>
-            <div class="form-group">
-              <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
-              <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
-              <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-             
-            </div>
-            <?php if ($minimum > 1) { ?>
-            <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
-            <?php } ?>
+         
           </div>
        
         </div></div></div></div></div></div></div></div>
@@ -345,12 +351,11 @@
         <?php } else { ?>
         <?php $class = 'col-xs-6 col-sm-3'; ?>
         <?php } ?>-->
-        <div class="">
+        <div class="box-shadow">
           <div class="product-thumb transition">
           	 <label>
                     <input class="checkbox" type="checkbox" name="checkbox-test">
                     <span class="checkbox-custom"></span>
-                    <span class="label">Lorem ipsum dolor</span>
                 </label>
 
             <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
@@ -403,7 +408,9 @@
       <?php } ?>
       <?php echo $content_bottom; ?></div></div> 
     <?php echo $column_right; ?></div>
-            <div class="container-fluid"> 
+            <div class="container-fluid tabs">
+            <div class="row">	 
+            <div class="container">	
             <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
             <?php if ($attribute_groups) { ?>
@@ -413,6 +420,8 @@
             <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
             <?php } ?>
           </ul>
+          </div>
+          </div>
            </div>
            <div class="container">  
           <div class="tab-content">
@@ -444,22 +453,41 @@
                 <div id="review"></div>
                 <h2><?php echo $text_write; ?></h2>
                 <?php if ($review_guest) { ?>
+                  <div class="form-group required">
+                  <div class="col-sm-12">
+                       <label class="placeinput col-sm-4">
+                   <input required="1" type="text" name="name" value="" id="input-name" class="form-control feedback">
+                   <div class="place_holder_product">Ваше имя<span>*</span></div>
+                 </label>
+                </div>
+              </div>
                 <div class="form-group required">
                   <div class="col-sm-12">
-                    <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-                    <input type="text" name="name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control" />
+                    <label class="placeinput col-sm-12">
+                    <textarea  name="text" rows="5" id="input-review" class="form-control feedback" placeholder="Ваш отзыв"></textarea>
+              
+                       </label>
                   </div>
                 </div>
-                <div class="form-group required">
+                <div class="form-group required rating_div">
                   <div class="col-sm-12">
-                    <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
-                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                    <div class="help-block"><?php echo $text_note; ?></div>
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label"><?php echo $entry_rating; ?></label>
+                    <div id="reviewStars-input">
+    <input id="star-4" type="radio" name="rating" value="1" />
+    <label title="gorgeous" for="star-4"></label>
+
+    <input id="star-3" type="radio" name="rating" value="2" />
+    <label title="good" for="star-3"></label>
+
+    <input id="star-2" type="radio" name="rating" value="3" />
+    <label title="regular" for="star-2"></label>
+
+    <input id="star-1" type="radio" name="rating" value="4" />
+    <label title="poor" for="star-1"></label>
+
+    <input id="star-0" type="radio" name="rating" value="5" />
+    <label title="bad" for="star-0"></label> 
+</div>
+                   <!-- <label class="control-label rating_star"><?php echo $entry_rating; ?></label>
                     &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
                     <input type="radio" name="rating" value="1" />
                     &nbsp;
@@ -470,12 +498,13 @@
                     <input type="radio" name="rating" value="4" />
                     &nbsp;
                     <input type="radio" name="rating" value="5" />
-                    &nbsp;<?php echo $entry_good; ?></div>
+                    &nbsp;<?php echo $entry_good; ?></div>-->
                 </div>
                 <?php echo $captcha; ?>
                 <div class="buttons clearfix">
                   <div class="pull-right">
-                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
+                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>"" class="btn feedback_button">Оставить отзыв</button>
+              
                   </div>
                 </div>
                 <?php } else { ?>
@@ -708,7 +737,6 @@ $(document).ready(function() {
    navigation: true,
    navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
    pagination: false,
-
      });
   })
 </script>
