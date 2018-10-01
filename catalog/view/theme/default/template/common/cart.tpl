@@ -1,4 +1,4 @@
-<div id="cart" class="btn-group btn-block">
+<div id="cart" class="btn-group btn-block cart-tov">
   <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle">
     <!--<img src="../image/icons8-basket.png" alt="">-->
     <span id="cart-total">
