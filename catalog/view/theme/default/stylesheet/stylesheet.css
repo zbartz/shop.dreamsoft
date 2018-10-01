@@ -260,11 +260,11 @@ background-color: #b51f1f;
 	text-align: center;
 	text-transform: uppercase; }
 	.main-mnu > ul {
-		list-style-type: none;
 		margin: 0;
-		padding: 0; }
+		padding: 0;
+		list-style-type: none; }
 		.main-mnu > ul > li {
-			float: left;
+			display: table-cell;
 			background: #b51f1f;
 			border-right: 1px solid #fff; }
 			.main-mnu > ul > li:first-child {
@@ -280,7 +280,7 @@ background-color: #b51f1f;
 					margin-right: 15px; }
 			.main-mnu > ul > li > a {
 				color: #fff;
-				padding: 15px 24px;
+				padding: 14px 20px 12px;
 				font-size: 18px;
 				display: block;
 				text-decoration: none; }
@@ -526,7 +526,8 @@ font-weight: 700;
 	-webkit-border-radius: 0px;
 	        border-radius: 0px;
 	margin-bottom: 0px;
-	border: 0px solid transparent; 
+	border: 0px solid transparent;
+	min-height: 46px; 
 }
 @media (min-width: 768px) {
 	#menu .dropdown:hover .dropdown-menu {
@@ -1561,7 +1562,7 @@ footer a {
  		min-width: 160px;
     }
 .search{
-	height: 220px;
+	height: 140px;
 }   
 .count_items {
     top: -6px;
@@ -1651,7 +1652,7 @@ footer a {
     padding: 22px 156px;
 }
 .search {
-    height: 170px;
+    height: 140px;
 }
 .count_items {
     top: -6px;
@@ -2564,7 +2565,7 @@ div.required .control-label:before{
 				margin: 0; }
 			.main-mnu > ul > li:last-child .btn-group {
 				margin: 0;
-				padding: 9px 0px 4px 48px; }
+				padding: 0; }
 	#search {
 		display: none; }
 	#search
@@ -2575,16 +2576,15 @@ div.required .control-label:before{
 		#cart > .btn {
 			padding: 0;}
 	i.fa.fa-shopping-cart {
+		display: none;
     position: absolute;
     font-size: 30px;
     right: 186px; }
 	.count_items {
-		float: right;
-		position: relative;
 		margin: 0px;
 		padding: 0px;
-		top: 8px;
-		left: -158px;
+		top: 0px;
+		left: inherit;
 		font-size: 20px;
 		background: none;}
 	.search
@@ -2603,7 +2603,7 @@ div.required .control-label:before{
 				margin: 0; }
 			.main-mnu > ul > li:last-child .btn-group {
 				margin: 0;
-				padding: 9px 0px 4px 54px; }
+				padding: 0; }
 		.main-mnu > ul > li > a {
 			color: #fff;
 			font-size: 16px;
@@ -2615,22 +2615,22 @@ div.required .control-label:before{
 		display: none; }
 	#search 
 		.btn-lg {
-			position: absolute;	}
+			position: absolute;
+			right: 0px;	}
 	#cart {
 		margin: 0; }
 		#cart > .btn {
 			padding: 0;}
 	i.fa.fa-shopping-cart {
+		display: none;
     position: absolute;
     font-size: 30px;
     right: 186px; }
 	.count_items {
-    float: right;
-    position: relative;
     margin: 0px;
     padding: 0px;
-    top: 8px;
-    left: -158px;
+    top: 0px;
+		left: inherit;
     font-size: 20px;
     background: none; }
   .basket {
