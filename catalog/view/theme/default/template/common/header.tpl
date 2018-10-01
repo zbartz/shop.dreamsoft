@@ -157,7 +157,7 @@
 </button>  -->
 <div class="main-mnu">
   <ul>
-    <li><a href="/home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+    <li><a href="http://shop.dreamsoft/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
     <li><a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
     <li><a class="search-block"><i class="fa fa-search" aria-hidden="true"></i></a></li>
     <li><a href="/contacts"><i class="fa fa-phone" aria-hidden="true"></i></a></li>
