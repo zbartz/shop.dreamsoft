@@ -368,7 +368,7 @@ font-size: 16px;
 }
 #cart.open > .btn {
 	background-image: none;
-	background-color: #921212;
+	/*background-color: #921212;*/
 	/*border: 1px solid #E6E6E6;*/
 	color: #fff;
 	box-shadow: none;
