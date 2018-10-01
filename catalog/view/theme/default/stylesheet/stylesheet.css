@@ -274,7 +274,6 @@ background-color: #b51f1f;
 			.main-mnu > ul > li:nth-child(4) {
 				background: #555; }
 			.main-mnu > ul > li:last-child {
-				display: block;
 				background: #b51f1f;
 				border: none; }
 				.main-mnu > ul > li:last-child a i {
@@ -2639,3 +2638,13 @@ div.required .control-label:before{
 	.search
 		.cart-tov {
 			display: none; } }
+
+@media (min-width: 270px) and (max-width: 409.98px) {
+.main-mnu > ul > li:last-child {
+	display: block; }
+i.fa.fa-shopping-cart {
+	display: block;
+	margin-right: 10px;}
+.count_items{
+	top: 10px;
+	right: 10px; } }
