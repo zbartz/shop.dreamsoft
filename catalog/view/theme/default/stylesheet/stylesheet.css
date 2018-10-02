@@ -2570,7 +2570,8 @@ div.required .control-label:before{
 		display: none; }
 	#search
 		.btn-lg {
-			position: absolute;	}
+			position: absolute;
+			right: 0;	}
 	#cart {
 		margin: 0; }
 		#cart > .btn {
