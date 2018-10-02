@@ -198,46 +198,48 @@
 			</ul>
 		</div>
 	</div>
-	<div class="collapse navbar-collapse menu_red" id="bs-example-navbar-collapse-1">
-		<ul class="nav nav-pills">
-			<li class="dropdown"><a id="drop4" href="http://shop.dreamsoft/catalogue">Каталог</a>
-				<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-					<?php foreach ($categories as $category) { ?>
-					<?php if ($category['children']) { ?>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo $category['href']; ?>" target="_blank"><?php echo $category['name']; ?></a></li>
-					<div class="dropdown-menu">
-						<div class="dropdown-inner">
-							<?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-							<ul class="list-unstyled">
-								<?php foreach ($children as $child) { ?>
+	<div class="container">
+		<div class="collapse navbar-collapse menu_red" id="bs-example-navbar-collapse-1">
+			<ul class="nav nav-pills">
+				<li class="dropdown"><a id="drop4" href="http://shop.dreamsoft/catalogue">Каталог</a>
+					<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+						<?php foreach ($categories as $category) { ?>
+						<?php if ($category['children']) { ?>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo $category['href']; ?>" target="_blank"><?php echo $category['name']; ?></a></li>
+						<div class="dropdown-menu">
+							<div class="dropdown-inner">
+								<?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+								<ul class="list-unstyled">
+									<?php foreach ($children as $child) { ?>
+									<?php } ?>
+								</ul>
 								<?php } ?>
-							</ul>
+							</div>
+							<?php } else { ?>
+							<li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+							<?php } ?>
 							<?php } ?>
 						</div>
-						<?php } else { ?>
-						<li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-						<?php } ?>
-						<?php } ?>
-					</div>
-				</ul>
-			</li>
-			<li class="item-header-menu"><a href="http://shop.dreamsoft/delivery">Доставка и оплата</a></li>
-			<li class="item-header-menu"><a href="http://shop.dreamsoft/about_us">О производителе</a></li>
-			<li class="item-header-menu"><a href="http://shop.dreamsoft/news">Новости</a></li>
-			<li class="item-header-menu"><a href="http://shop.dreamsoft/article">Статьи</a></li>
-			<li class="item-header-menu"><a href="http://shop.dreamsoft/contacts">Контакты</a></li> 
-			<li class="currency"> <?php echo $currency;?> </li>
+					</ul>
+				</li>
+				<li class="item-header-menu"><a href="http://shop.dreamsoft/delivery">Доставка и оплата</a></li>
+				<li class="item-header-menu"><a href="http://shop.dreamsoft/about_us">О производителе</a></li>
+				<li class="item-header-menu"><a href="http://shop.dreamsoft/news">Новости</a></li>
+				<li class="item-header-menu"><a href="http://shop.dreamsoft/article">Статьи</a></li>
+				<li class="item-header-menu"><a href="http://shop.dreamsoft/contacts">Контакты</a></li> 
+				<li class="currency"> <?php echo $currency;?> </li>
 
-		</ul>
+			</ul>
+		</div>
 	</div>
 </nav>
 <?php } ?>
 <header class="search">
 	<div class="container">
 		<div class="row searc_padd">
-			<div class="col-sm-7"><?php echo $search; ?>
+			<div class="col-sm-6"><?php echo $search; ?>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<a href="<?php echo $compare; ?>" id="compare-total" title="<?php echo $text_compare; ?>">
 					<span class=""><?php echo $text_compare; ?></span>
 				</a>
