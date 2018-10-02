@@ -122,8 +122,6 @@
           <?php } ?>
         </div>
       </div>
-      
-      
       <?php echo $language; ?>
       
       <div id="top-links" class="nav pull-left">
