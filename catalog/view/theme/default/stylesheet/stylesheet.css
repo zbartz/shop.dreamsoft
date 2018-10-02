@@ -411,7 +411,9 @@ float: right;
 	padding: 0;
 }
 .nav {
-		padding-left: 5px;
+	padding-left: 5px;
+	display: flex;
+	justify-content: center;
 		}
  .basket{
 	margin-left: 18px;
