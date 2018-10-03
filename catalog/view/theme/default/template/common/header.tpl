@@ -98,7 +98,7 @@
     		<!-- <li><span class="   "><?php echo $geoip; ?></span></li>-->
     		<li><span>Электро-инструмент отечественного производства</span><br><span> для стройки, ремонта и своего хозяйства</span></li>
     		<li><span class="open_new"><?php echo $open; ?></span><span class=" ">Приём заказов круглосуточно</span></li>
-    		<li><a href="tel:+2312312312"><img src="../image/tele_icon.png" alt=""> <span class="  tele_new"><?php echo $telephone; ?></a></span> 
+    		<li class="hidden-xs"><a href="tel:+2312312312"><img src="../image/tele_icon.png" alt=""> <span class="  tele_new"><?php echo $telephone; ?></a></span> 
     			<div class= "div3">
     				<a href="viber://chat?number=380957225442" class="sociallinks_new"><img src="../image/icons8-viber-filled-50.png" alt="Диолд мастер в viber" /></a>
     				<a href="https://api.whatsapp.com/send?phone=380951267232" class="sociallinks_new"><img src="../image/icons8-whatsapp-48.png" alt="Диолд мастер в whatsapp" /></a>
@@ -107,7 +107,7 @@
     			</div>
     		</li>
     		<li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md">Войти</span> <span class="caret"></span></a>
-    			<ul class="dropdown-menu dropdown-menu-right">
+    			<ul class="dropdown-menu dropdown-menu-right ">
     				<?php if ($logged) { ?>
     				<li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
     				<li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
