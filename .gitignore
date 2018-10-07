@@ -1,0 +1,6 @@
+
+system/storage/logs/error.log
+*.log
+*.1538556062
+catalog/view/theme/default/template/common/header.tpl
+catalog/view/theme/default/stylesheet/stylesheet.css
